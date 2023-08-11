@@ -1,0 +1,55 @@
+/*  онтейнер-перевертыш Ч ширина и высота могут быть любыми.
+ ћы добавили рамку, чтобы показать, что сам переворот доступен
+ при наведении уже из коробки (удалите perspective, если не нужен 3D эффект */
+.flip-box {
+  position: relative;
+
+  margin-top: 100px;
+  height: 175px;
+  background-color: transparent;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #000;
+  perspective: 1000px; /* ”далите, если не нужен 3D эффект */
+}
+
+/* Ётот контейнер нужен дл€ позиционировани€ передней и задней стороны */
+.flip-box-inner {
+position: relative;
+  margin-top: 10px;
+  height: 1px;
+  z-index: 2
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* ѕереворачиваем по горизонтали при наведении мыши на контейнер-перевертыш */
+.flip-box:hover .flip-box-inner {
+  transform: rotateY(180deg);
+}
+
+/* ѕозиционирование передней и задней стороны */
+.flip-box-front, .flip-box-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  backface-visibility: hidden;
+}
+
+/* —тиль передней стороны (на случай, если изображени€ не будет) */
+.flip-box-front {
+  background-color: #bbb;
+  color: black;
+}
+
+/* —тиль задней стороны */
+.flip-box-back {
+  background-color: dodgerblue;
+  color: white;
+  transform: rotateY(180deg);
+}
